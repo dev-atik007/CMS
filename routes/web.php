@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController;
@@ -34,6 +35,7 @@ Route::get('/logout', [DashboardController::class, 'logout'])->name('dashboard.l
 Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
 
 
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -57,6 +59,14 @@ Route::controller(PostController::class)->group(function() {
     Route::post('/posts-update/{id}', 'update')->name('posts.update');
     Route::get('/posts-delete/{id}', 'delete')->name('posts.delete');
 });
+
+Route::controller(UserController::class)->group(function() {
+    Route::get('/user-index', 'user')->name('user.index');
+    Route::get('/user-edit/{id}', 'edit')->name('user.edit');
+    Route::put('/user-update/{id}', 'update')->name('user.update');
+});
+
+
 
 
 require __DIR__.'/auth.php';

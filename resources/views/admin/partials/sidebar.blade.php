@@ -20,12 +20,6 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('category.index') }}">
-                <span class="menu-title">Category</span>
-                <i class="mdi mdi-home menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="{{ route('posts.index') }}">
                 <span class="menu-title">Posts</span>
                 <i class="mdi mdi-home menu-icon"></i>
@@ -33,17 +27,24 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Basic UI Elements</span>
+                <span class="menu-title">Category</span>
                 <i class="menu-arrow"></i>
                 <i class="mdi mdi-crosshairs-gps menu-icon"></i>
               </a>
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{ route('category.index') }}">Index</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{ route('category.create') }}">Create Form</a></li>
                 </ul>
               </div>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('user.index') }}">
+                <span class="menu-title">Users</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
                 <span class="menu-title">Sample Pages</span>
@@ -56,4 +57,5 @@
                 </ul>
               </div>
             </li>
+            
           </ul>
