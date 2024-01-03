@@ -34,8 +34,8 @@
                             </td>
                             <td>{{ $post->is_publish }}</td>
                             <td>
-                                <a href="" class="btn btn-primary btn-sm">Edit</a>
-                                <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                <a href="{{ route('post.edit', $post->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                <a href="{{ route('posts.delete', $post->id) }}" onclick="confirmation(event)" class="btn btn-danger btn-sm">Delete</a>
                             </td>
                         </tr>
                     @endforeach
@@ -46,3 +46,24 @@
 </div>
 
 @endsection
+
+
+<script>
+      function confirmation(ev) {
+        ev.preventDefault();
+        var urlToRedirect = ev.currentTarget.getAttribute('href');  
+        console.log(urlToRedirect); 
+        swal({
+            title: "Are you sure to Delete this post",
+            text: "You will not be able to revert this!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willCancel) => {
+            if (willCancel) {         
+                window.location.href = urlToRedirect;               
+            }  
+        });        
+    }
+</script>

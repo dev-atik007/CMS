@@ -60,4 +60,44 @@ class PostController extends Controller
 
         return back();
     }
+
+    public function edit($id)
+    {
+        $post = Post::find($id);
+        $categories = Category::all();
+        return view('admin.post.edit', compact('categories','post'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $post = Post::find($id);
+
+        // This is image part
+        $image = $request->image;
+        $imagename = time().'.'.$image->getClientOriginalExtension();
+        $request->image->move('postImage', $imagename);
+
+        $post->title        = $request->title;
+        $post->category_id  = $request->category;
+        $post->description  = $request->description;
+        $post->image        = $imagename;
+        $post->save();
+
+        toastr()->success('Data successfully updated !');
+        return redirect()->back();
+
+    }
+
+    public function delete($id)
+    {
+        $post = Post::find($id);
+            if ($post) {
+                $post->delete();
+                return redirect()->back()->with('message', 'Data Delete Successfully');
+            } else {
+                return redirect()->route('post.index');
+            }
+    }
+
+
 }
