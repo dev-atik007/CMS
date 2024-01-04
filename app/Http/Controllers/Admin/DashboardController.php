@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +19,9 @@ class DashboardController extends Controller
 
             if($usertype == 'user')
             {
-                return view('website.master');
+                $posts = Post::all();
+                $categories = Category::all();
+                return view('website.master', compact('categories','posts'));
             }
             else if($usertype == 'admin')
             {

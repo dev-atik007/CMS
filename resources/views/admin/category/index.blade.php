@@ -11,10 +11,11 @@
                 {{ session()->get('message') }}
             </div>
         @endif
-
+        
+        @if (count($categories) > 0)
             <h4 class="card-title">Category table</h4>
             <p class="card-description"><a href="{{ route('category.create') }}" class="btn btn-info btn-sm">Add Category</a></p>      
-            <table class="table table-bordered" style="text-align: center;">
+            <table id="posts-table" class="table table-bordered" style="text-align: center;">
                 <thead>
                     <tr>
                         <th> # </th>
@@ -28,13 +29,16 @@
                           <td> {{ $key+1 }} </td>
                           <td> {{ $category->name }} </td>
                           <td>
-                            <a href="{{ route('category.edit', $category->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                            <a href="{{ route('category.delete', $category->id) }}" onclick="confirmation(event)" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="{{ route('category.edit', $category->id) }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="{{ route('category.delete', $category->id) }}" onclick="confirmation(event)" class="btn btn-danger btn-sm"> <i class="fa-solid fa-trash"></i> </a>
                           </td>
                         </tr>
                     @endforeach
                     </tbody>
             </table>
+        @else
+            <h3 class="text-center text-danger">No Category Found</h3>
+        @endif
         </div>
     </div>
 </div>
