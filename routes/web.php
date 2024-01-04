@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/', [WebsiteController::class, 'website'])->name('web.maaster');
-Route::get('/single-fullwidth-sidebar', [WebsiteController::class, 'singlePage'])->name('single.page');
+Route::get('/single-fullwidth-sidebar/{post}', [WebsiteController::class, 'singlePage'])->name('single.page');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

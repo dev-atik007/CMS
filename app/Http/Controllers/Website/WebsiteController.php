@@ -11,13 +11,14 @@ class WebsiteController extends Controller
 {
     public function website()
     {
-        $posts = Post::all();
+        // dd(Post::published);
         $categories = Category::all();
+        $posts = Post::where('is_publish', Post::published)->get();
         return view('website.master', compact('posts','categories'));
     }
 
-    public function singlePage()
+    public function singlePage(post $post)
     {
-        return view('website.single_page.page');
+        return view('website.single_page.page', compact('post'));
     }
 }

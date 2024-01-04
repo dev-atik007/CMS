@@ -572,9 +572,9 @@
                 <div class="container">
                     <figure class="entry-media">
                         <div class="owl-carousel owl-simple owl-light owl-nav-inside" data-toggle="owl">
-                            <img src="{{ url('assets/website/images/blog/single/fullwidth-sidebar/1.jpg') }}" alt="image desc">
-                            <img src="{{ url('assets/website/images/blog/single/fullwidth-sidebar/2.jpg') }}" alt="image desc">
-                            <img src="{{ url('assets/website/images/blog/single/fullwidth-sidebar/3.jpg') }}" alt="image desc">
+                            <img src="/postImage/{{ $post->image }}" alt="image desc">
+                     
+                            
                         </div><!-- End .owl-carousel -->
                     </figure><!-- End .entry-media -->
                 	<div class="row">
@@ -583,50 +583,25 @@
                                 <div class="entry-body">
                                     <div class="entry-meta">
                                         <span class="entry-author">
-                                            by <a href="#">John Doe</a>
+                                            by <a href="#">{{ $post->name }}</a>
                                         </span>
                                         <span class="meta-separator">|</span>
-                                        <a href="#">Nov 22, 2018</a>
+                                        <a href="#">{{ date('d M Y', strtotime($post->created_at)) }}</a>  
                                         <span class="meta-separator">|</span>
                                         <a href="#">2 Comments</a>
                                     </div><!-- End .entry-meta -->
 
                                     <h2 class="entry-title entry-title-big">
-                                        Sed adipiscing ornare risus.
+                                        {{ $post ? $post->title: '' }}
                                     </h2><!-- End .entry-title -->
 
                                     <div class="entry-cats">
-                                        in <a href="#">Fashion</a>,
-                                        <a href="#">Shopping</a>
+                                        in <a href="#">{{ $post->category->name }}</a>,
                                     </div><!-- End .entry-cats -->
 
                                     <div class="entry-content editor-content">
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.</p>
-
-                                        <p>Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a <a href="#">ultrices sagittis</a>, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>
-
-                                        <blockquote>
-                                            <p>“ Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. ”</p>
-                                        </blockquote>
-
-                                        <p>Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula <a href="#">sollicitudin laoreet</a> viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. </p>
-
-                                        <div class="pb-1"></div><!-- End .pb-1 -->
-
-                                        <img src="{{ url('assets/website/images/blog/single/fullwidth-sidebar/4.jpg') }}" alt="image">
-                                        <img src="{{ url('assets/website/images/blog/single/fullwidth-sidebar/5.jpg') }}" alt="image">
-
-                                        <div class="pb-1"></div><!-- End .pb-1 -->
-
-                                        <p>Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna. Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. </p>
-
-                                        <div class="pb-1"></div><!-- End .pb-1 -->
-
-                                        <h3>Morbi interdum mollis sapien.</h3>
-
-                                        <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. </p>
-
-                                        <p>Praesent <a href="#">elementum hendrerit</a> tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>
+                                    <p1><b>{!! $post->description !!}</b></p1>    
+                                    
                                     </div><!-- End .entry-content -->
 
                                     <div class="entry-footer row no-gutters flex-column flex-md-row">
