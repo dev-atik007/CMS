@@ -910,56 +910,26 @@
                                 <div class="widget">
                                     <h3 class="widget-title">Popular Posts</h3><!-- End .widget-title -->
 
-                                    <ul class="posts-list">
-                                        <li>
-                                            <figure>
-                                                <a href="#">
-                                                    <img src="{{ url('assets/website/images/blog/sidebar/post-1.jpg') }}" alt="post">
-                                                </a>
-                                            </figure>
+                                    @if (count($latestPosts) > 0)
+                                        @foreach ($latestPosts as $post)
+                                        <ul class="posts-list">
+                                            <li>
+                                                <figure>
+                                                    <a href="{{ route('single.page', $post->id) }}">
+                                                        <img src="/postImage/{{ $post->image }}" alt="post">
+                                                    </a>
+                                                </figure>
 
-                                            <div>
-                                                <span>Nov 22, 2018</span>
-                                                <h4><a href="#">Aliquam tincidunt mauris eurisus.</a></h4>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <figure>
-                                                <a href="#">
-                                                    <img src="{{ url('assets/website/images/blog/sidebar/post-2.jpg') }}" alt="post">
-                                                </a>
-                                            </figure>
-
-                                            <div>
-                                                <span>Nov 19, 2018</span>
-                                                <h4><a href="#">Cras ornare tristique elit.</a></h4>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <figure>
-                                                <a href="#">
-                                                    <img src="{{ url('assets/website/images/blog/sidebar/post-3.jpg') }}" alt="post">
-                                                </a>
-                                            </figure>
-
-                                            <div>
-                                                <span>Nov 12, 2018</span>
-                                                <h4><a href="#">Vivamus vestibulum ntulla nec ante.</a></h4>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <figure>
-                                                <a href="#">
-                                                    <img src="{{ url('assets/website/images/blog/sidebar/post-4.jpg') }}" alt="post">
-                                                </a>
-                                            </figure>
-
-                                            <div>
-                                                <span>Nov 25, 2018</span>
-                                                <h4><a href="#">Donec quis dui at dolor  tempor interdum.</a></h4>
-                                            </div>
-                                        </li>
-                                    </ul><!-- End .posts-list -->
+                                                <div>
+                                                    <span>{{ date('d M Y', strtotime($post->created_at)) }}</span>
+                                                    <h4><a href="#">{{ Str::limit($post->description, 11) }}</a></h4>
+                                                </div>
+                                            </li>
+                                        </ul><!-- End .posts-list -->
+                                        @endforeach
+                                        @else
+                                            <h3 class="text-center text-danger">No post data yet</h3>
+                                        @endif<!-- End .posts-list -->
                                 </div><!-- End .widget -->
 
                                 <div class="widget widget-banner-sidebar">

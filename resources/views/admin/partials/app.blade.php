@@ -32,5 +32,7 @@
     </div>
     <!-- container-scroller -->
     @include('admin.partials.script')
+
   </body>
 </html>
+

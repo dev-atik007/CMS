@@ -19,9 +19,10 @@ class DashboardController extends Controller
 
             if($usertype == 'user')
             {
+                $latestPosts = Post::all();
                 $posts = Post::all();
                 $categories = Category::all();
-                return view('website.master', compact('categories','posts'));
+                return view('website.master', compact('categories','posts','latestPosts'));
             }
             else if($usertype == 'admin')
             {

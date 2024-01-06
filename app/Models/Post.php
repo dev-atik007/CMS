@@ -9,9 +9,8 @@ class Post extends Model
 {
     use HasFactory;
 
-    public const published = 1;
-    public const Draft = 0;
-
+        // public const published = 1;
+        // public const Draft = 0;
 
     public function category()
     {

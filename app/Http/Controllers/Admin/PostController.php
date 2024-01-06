@@ -26,6 +26,7 @@ class PostController extends Controller
 
     public function store(PostFormRequest $request)
     {
+        // dd($request->all());
         // This is image part
         $image = $request->image;
         $imagename = time().'.'.$image->getClientOriginalExtension();
@@ -48,7 +49,7 @@ class PostController extends Controller
         $post->user_id      = $userid;
         $post->name         = $name;
         $post->usertype     = $usertype;
-        $post->is_publish   = $request->is_publish;
+        $post->is_publish   = $request->is_publish==1?1:0;
         $post->save();
 
         if ($post instanceof Model) {

@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Website\ShowPostController;
+use App\Http\Controllers\Website\UserPostController;
 use App\Http\Controllers\Website\WebsiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,20 +21,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Website
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
 Route::get('/', [WebsiteController::class, 'website'])->name('web.maaster');
 Route::get('/single-fullwidth-sidebar/{post}', [WebsiteController::class, 'singlePage'])->name('single.page');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    // User Create Post Route
+    Route::get('/user-create/post', [UserPostController::class, 'createPost'])->name('create.post');
+    Route::post('/user-post/store', [UserPostController::class, 'store'])->name('post.store');
+
+    // User post show
+    Route::get('/user-show-post', [ShowPostController::class, 'showPost'])->name('show.post');
+});
+
+
+
+// Admin
 Route::get('/logout', [DashboardController::class, 'logout'])->name('dashboard.logout');
 
-
 Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth');
-
 
 
 Route::middleware('auth')->group(function () {
@@ -63,6 +76,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/user-edit/{id}', 'edit')->name('user.edit');
         Route::put('/user-update/{id}', 'update')->name('user.update');
     });
+
 });
 
 

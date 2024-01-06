@@ -8,6 +8,7 @@
 </head>
 
 <body>
+
     <div class="page-wrapper">
         <header class="header">
             @include('website.partials.header')

@@ -19,7 +19,7 @@
 
                 <div class="form-group">
                     <label for="exampleInputName1">Title</label>
-                    <input type="text" name="title" class="form-control"  placeholder="Title" required>
+                    <input type="text" name="title" class="form-control" value="{{ old('title') }}"  placeholder="Title" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputName1">Category</label>

@@ -1,11 +1,10 @@
 <div class="col-lg-9">
                             <article class="entry entry-list">
                                 <div class="row align-items-center">
-
                                     @foreach ($posts as $post)
                                         <div class="col-md-5">
                                             <figure class="entry-media">
-                                                <a href="single.html">
+                                                <a href="{{ route('single.page', $post->id) }}">
                                                     <img src="/postImage/{{ $post->image }}" alt="image desc">
                                                 </a>
                                             </figure><!-- End .entry-media -->
@@ -24,7 +23,7 @@
                                                 </div><!-- End .entry-meta -->
 
                                                 <h2 class="entry-title">
-                                                    <a href="#">{{ $post->title }}</a>
+                                                    <a href="{{ route('single.page', $post->id) }}">{{ $post->title }}</a>
                                                 </h2><!-- End .entry-title -->
 
                                                 <div class="entry-cats">

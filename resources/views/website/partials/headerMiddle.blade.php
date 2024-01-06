@@ -6,8 +6,8 @@
                             <i class="icon-bars"></i>
                         </button>
 
-                        <a href="index.html" class="logo">
-                            <img src="{{ url('assets/website/images/logo.png') }}" alt="Molla Logo" width="105" height="25">
+                        <a href="{{ route('web.maaster') }}" class="logo">
+                            <img src="{{ url('assets/website/images/logo.png') }}"  alt="Molla Logo" width="105" height="25">
                         </a>
                         <div class="header-top">
                 <div class="container">
@@ -35,6 +35,8 @@
                                     @if (Route::has('login'))
 
                                     @auth
+                                    <li><a href="{{ route('show.post') }}">My Post</a></li>
+                                    <li><a href="{{ route('create.post') }}">Create Post</a></li>
                                     <li>
                                         <x-app-layout>
                                         </x-app-layout> 
@@ -42,7 +44,6 @@
                                     @else
                                     <li><a href="{{ route('login') }}"><i class="icon-user"></i>Login</a></li>
                                     <li><a href="{{ route('register') }}"><i class="icon-user"></i>Register</a></li>
-
                                     @endauth
 
                                     @endif
