@@ -71,17 +71,21 @@ class PostController extends Controller
 
     public function update(Request $request, $id)
     {
+        
         $post = Post::find($id);
 
         // This is image part
         $image = $request->image;
-        $imagename = time().'.'.$image->getClientOriginalExtension();
-        $request->image->move('postImage', $imagename);
+        if($image)
+        {
+            $imagename = time().'.'.$image->getClientOriginalExtension();
+            $request->image->move('postImage',$imagename);
+            $post->image        = $imagename;
+        }
 
         $post->title        = $request->title;
         $post->category_id  = $request->category;
         $post->description  = $request->description;
-        $post->image        = $imagename;
         $post->save();
 
         toastr()->success('Data successfully updated !');

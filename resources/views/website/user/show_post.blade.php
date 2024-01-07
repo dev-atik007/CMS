@@ -44,13 +44,14 @@
         		</div><!-- End .container -->
         	</div><!-- End .page-header -->
         
-        @foreach ($data as $key=>$data)
+        @foreach ($data as $data)
             <div class="post">
-                <th><strong>{{ $key+1 }}</strong></th>
                 <img src="/postImage/{{ $data->image }}">
                 <h4 class="title">{{ $data->title }}</h4>
-                <p class="description">{!! $data->description !!}</p>
-                <h1 style="text-align: center;">==========Next==========</h1>
+                <p class="description">{!! $data->description !!}</p>   
+                <a href="{{ route('user.post.edit', $data->id) }}" class="btn btn-success">Post Edit</a>           
+                <a href="{{ route('post.delete', $data->id) }}" onclick="confirmation(event)" class="btn btn-danger">Post Delete</a>
+                <h1 style="text-align: center; padding: 15px;">==========Next==========</h1>
             </div>
         @endforeach
         
@@ -74,3 +75,23 @@
 
 <!-- molla/blog-listing.html  22 Nov 2019 10:04:12 GMT -->
 </html>
+
+<script>
+      function confirmation(ev) {
+        ev.preventDefault();
+        var urlToRedirect = ev.currentTarget.getAttribute('href');  
+        console.log(urlToRedirect); 
+        swal({
+            title: "Are you sure to Delete this post",
+            text: "You will not be able to revert this!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willCancel) => {
+            if (willCancel) {         
+                window.location.href = urlToRedirect;               
+            }  
+        });        
+    }
+</script>

@@ -4,10 +4,12 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\TelePhoneController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Website\ShowPostController;
 use App\Http\Controllers\Website\UserPostController;
 use App\Http\Controllers\Website\WebsiteController;
+use App\Http\Controllers\website\WishLishController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +32,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [WebsiteController::class, 'website'])->name('web.maaster');
 Route::get('/single-fullwidth-sidebar/{post}', [WebsiteController::class, 'singlePage'])->name('single.page');
 
+Route::get('/wish-list-page', [WishLishController::class, 'wishList'])->name('wish.list');
 
 Route::middleware('auth')->group(function () {
     // User Create Post Route
@@ -38,6 +41,9 @@ Route::middleware('auth')->group(function () {
 
     // User post show
     Route::get('/user-show-post', [ShowPostController::class, 'showPost'])->name('show.post');
+    Route::get('/user-post-edit/{id}', [ShowPostController::class, 'postEdit'])->name('user.post.edit');
+    Route::post('/user-post-update/{id}', [ShowPostController::class, 'update'])->name('user.post.update');
+    Route::get('/user-show-post-delete/{id}', [ShowPostController::class, 'delete'])->name('post.delete');
 });
 
 
@@ -47,6 +53,9 @@ Route::get('/logout', [DashboardController::class, 'logout'])->name('dashboard.l
 
 Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth');
 
+
+Route::get('/tele-phone', [TelePhoneController::class, 'index'])->name('tele.phone');
+Route::get('/tele-phone-form', [TelePhoneController::class, 'create'])->name('phone.form');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

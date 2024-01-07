@@ -25,17 +25,17 @@
                     <label for="exampleInputName1">Category</label>
                     <select name="category" id="" class="form-control"  >
                         <option disabled selected>Choose Option</option>
-                        @if (count($categories) > 0)
+                        
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option  value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
-                        @endif
+
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputName1">Description</label>
                     <!-- <input type="text" name="title" class="form-control"  placeholder="Name"> -->
-                    <textarea  name="description" value="{{ $post->description }}" class="form-control"  cols="30" rows="20" ></textarea>
+                    <textarea  name="description" class="form-control" id="summernote"  required>   @php echo $post->description; @endphp </textarea>
                 </div>
                 <div class="form-group">
                     <label>Old Image</label>

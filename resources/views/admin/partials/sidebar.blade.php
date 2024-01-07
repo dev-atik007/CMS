@@ -45,9 +45,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">
-                <span class="menu-title">Setting</span>
-                <i class="mdi mdi-home menu-icon"></i>
+              <a class="nav-link" href="{{ route('tele.phone') }}">
+                <span class="menu-title">Tele-Phone</span>
+                <i class="fa-solid fa-phone"></i>
               </a>
             </li>
             
